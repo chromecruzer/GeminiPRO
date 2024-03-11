@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    title Gemini Chat
+    style.
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        margin: 20px auto;
+        text-align: center;
+      }
+      textarea {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .messages-container {
+        max-height: 300px; /* Set your desired max height here */
+        overflow-y: auto;
+      }
+      .message {
+        background-color: #f5f5f5;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+      .message p {
+        margin: 5px 0;
+      }
+      .message .user {
+        font-weight: bold;
+      }
+      .message .response {
+        color: #007bff;
+        white-space: pre-wrap;
+      }
+  body
+    h1 Gemini Chat
+    form(action="/sendMessage", method="post")
+      textarea(name="message", rows="4", cols="50")
+      br
+      input(type="submit", value="Send")
+    if messages.length
+      .messages-container
+        each msg in messages
+          .message
+            p.user= msg.user
+            p.response.message= msg.response
